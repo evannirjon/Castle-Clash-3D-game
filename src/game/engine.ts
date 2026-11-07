@@ -19,6 +19,15 @@ import {
 } from './rules';
 import { soundEngine } from './audio';
 import { Raylib2DContext, RLTexture2D } from './raylib';
+import imgBattlefieldBg from '../assets/images/battlefield_bg_1794043501397.jpg';
+import imgCastleAlly from '../assets/images/castle_ally_1794043501147.jpg';
+import imgCastleEnemy from '../assets/images/castle_enemy_1794043501923.jpg';
+import imgDragon from '../assets/images/dragon_sprite_1794043503257.jpg';
+import imgKnight from '../assets/images/cavalry_knight_1794043504093.jpg';
+import imgArcher from '../assets/images/cavalry_archer_1794043541820.jpg';
+import imgSiege from '../assets/images/siege_catapult_1794043541691.jpg';
+import imgBoss1 from '../assets/images/boss_warlord_1_1794043540234.jpg';
+import imgBoss2 from '../assets/images/boss_warlord_2_1794043542286.jpg';
 import {
   BattleSnapshot,
   BiomeTheme,
@@ -320,25 +329,26 @@ export class KingdomGameEngine {
 
     // Initialize Raylib 2D Texture/Sprite Pipeline & Preload High-Res Game Sprites
     this.rl = new Raylib2DContext(this.ctx);
-    this.texBg = this.rl.LoadTexture('/assets/sprites/battlefield_bg.jpg', false);
-    this.texCastleAlly = this.rl.LoadTexture('/assets/sprites/castle_ally.jpg', true);
-    this.texCastleEnemy = this.rl.LoadTexture('/assets/sprites/castle_enemy.jpg', true);
-    this.texDragon = this.rl.LoadTexture('/assets/sprites/dragon_sprite.jpg', true);
-    this.texKnight = this.rl.LoadTexture('/assets/sprites/cavalry_knight.jpg', true);
-    this.texArcher = this.rl.LoadTexture('/assets/sprites/cavalry_archer.jpg', true);
-    this.texSiege = this.rl.LoadTexture('/assets/sprites/siege_catapult.jpg', true);
-    this.texBoss1 = this.rl.LoadTexture('/assets/sprites/boss_warlord_1.jpg', true);
-    this.texBoss2 = this.rl.LoadTexture('/assets/sprites/boss_warlord_2.jpg', true);
+    this.texBg = this.rl.LoadTexture(imgBattlefieldBg, false);
+    this.texCastleAlly = this.rl.LoadTexture(imgCastleAlly, true);
+    this.texCastleEnemy = this.rl.LoadTexture(imgCastleEnemy, true);
+    this.texDragon = this.rl.LoadTexture(imgDragon, true);
+    this.texKnight = this.rl.LoadTexture(imgKnight, true);
+    this.texArcher = this.rl.LoadTexture(imgArcher, true);
+    this.texSiege = this.rl.LoadTexture(imgSiege, true);
+    this.texBoss1 = this.rl.LoadTexture(imgBoss1, true);
+    this.texBoss2 = this.rl.LoadTexture(imgBoss2, true);
 
     if (typeof Image !== 'undefined') {
-      const baseUrl = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || './';
-      for (const url of BOSS_PORTRAITS) {
-        const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
-        const resolvedUrl = url.startsWith('http') ? url : `${baseUrl}${cleanUrl}`;
+      const portraitMap = [
+        { key: BOSS_PORTRAIT_1, src: imgBoss1 },
+        { key: BOSS_PORTRAIT_2, src: imgBoss2 },
+      ];
+      for (const p of portraitMap) {
         const img = new Image();
-        img.src = resolvedUrl;
-        this.bossImages.set(url, img);
-        this.bossImages.set(resolvedUrl, img);
+        img.src = p.src;
+        this.bossImages.set(p.key, img);
+        this.bossImages.set(p.src, img);
       }
     }
 
