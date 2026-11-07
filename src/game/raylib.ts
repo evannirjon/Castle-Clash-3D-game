@@ -37,10 +37,9 @@ export class Raylib2DContext {
   }
 
   public LoadTexture(url: string, removeWhiteBackground = false): RLTexture2D {
-    // Resolve relative to Vite base URL so it works seamlessly on GitHub Pages subdirectories
-    const baseUrl = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || './';
-    const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
-    const resolvedUrl = url.startsWith('http') || url.startsWith('data:') ? url : `${baseUrl}${cleanUrl}`;
+    // Callers pass URLs from Vite asset imports, which are already resolved against the
+    // deploy base path. Re-prefixing them broke GitHub Pages (doubled /<repo>/ segment).
+    const resolvedUrl = url;
 
     const cacheKey = `${resolvedUrl}::${removeWhiteBackground ? 'chroma' : 'raw'}`;
     const existing = this.textures.get(cacheKey);
@@ -71,10 +70,8 @@ export class Raylib2DContext {
         tex.ready = true;
       };
       img.onerror = () => {
-        // Fallback: try relative path if absolute failed
-        if (url.startsWith('/')) {
-          img.src = '.' + url;
-        }
+        // Engine keeps drawing its procedural fallback while tex.ready is false.
+        console.warn(`[raylib] Failed to load texture: ${resolvedUrl}`);
       };
       img.src = resolvedUrl;
     }

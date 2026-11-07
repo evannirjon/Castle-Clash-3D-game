@@ -39,3 +39,18 @@ g++ -O2 game.cpp -o game.exe -lraylib -lopengl32 -lgdi32 -lwinmm && game.exe
 # macOS
 clang++ -O2 game.cpp -o game -L/opt/homebrew/lib -I/opt/homebrew/include -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo && ./game
 ```
+
+---
+
+## 🌐 Web Build & Deployment
+
+```bash
+npm install
+npm run dev      # local dev server on :3000
+npm test         # rules unit tests
+npm run build    # production build into dist/
+```
+
+GitHub Pages is deployed automatically by `.github/workflows/deploy.yml` on every push to `main`
+(**Settings → Pages → Source: GitHub Actions**). Do not commit `dist/` or built bundles —
+the root `index.html` is the Vite source entry and must keep pointing at `/src/main.tsx`.
