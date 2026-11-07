@@ -4,16 +4,15 @@ A complete 2D medieval strategy & tower defense game built with Raylib and React
 
 ---
 
-## 🎮 How to Play in Browser
-The web version is fully playable in any browser via `index.html`.
-- Run the dev server:
-  ```bash
-  npm run dev
-  ```
-- Or build for production:
-  ```bash
-  npm run build
-  ```
+## 🎮 How to Play in Browser (One-Click Instant Play)
+You can directly launch into the battle with one click:
+- **Instant Play URL**: [https://ais-pre-pg3sppomycr52zjolvylrj-488579483679.asia-east1.run.app/?autostart=1](https://ais-pre-pg3sppomycr52zjolvylrj-488579483679.asia-east1.run.app/?autostart=1)
+- Or simply open the web app: [https://ais-pre-pg3sppomycr52zjolvylrj-488579483679.asia-east1.run.app/](https://ais-pre-pg3sppomycr52zjolvylrj-488579483679.asia-east1.run.app/)
+
+To run locally in development:
+```bash
+npm run dev
+```
 
 ### Controls:
 - **`A` / `D` or `←` / `→`**: Move your Hero Commander along the causeway.
