@@ -5,11 +5,13 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: process.env.GITHUB_PAGES === 'true' ? '/Castle-Clash-3D-game/' : './',
+    // Relative base: the same build works at a domain root, under /Castle-Clash-3D-game/
+    // on GitHub Pages, or opened from any subfolder — no env flag to forget.
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {
