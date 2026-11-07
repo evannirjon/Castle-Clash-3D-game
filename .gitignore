@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# AI Studio scratch media and uploads (not used by the game at runtime)
+.aistudio/
+public/assets/aistudio/
+
+# Vite build output belongs in dist/ (deployed by CI), never in the repo root
+/assets/
