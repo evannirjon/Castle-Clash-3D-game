@@ -1,3 +1,6 @@
+import { soundEngine } from './audio';
+import { Raylib2DContext, RLTexture2D } from './raylib';
+import { EMBEDDED_SPRITES } from './embedded_sprites';
 import {
   ALLY_UNITS,
   BOSS_PORTRAIT_1,
@@ -17,17 +20,6 @@ import {
   getWallUpgradeCost,
   isNewHighScore,
 } from './rules';
-import { soundEngine } from './audio';
-import { Raylib2DContext, RLTexture2D } from './raylib';
-import imgBattlefieldBg from '../assets/images/battlefield_bg_1794043501397.jpg';
-import imgCastleAlly from '../assets/images/castle_ally_1794043501147.jpg';
-import imgCastleEnemy from '../assets/images/castle_enemy_1794043501923.jpg';
-import imgDragon from '../assets/images/dragon_sprite_1794043503257.jpg';
-import imgKnight from '../assets/images/cavalry_knight_1794043504093.jpg';
-import imgArcher from '../assets/images/cavalry_archer_1794043541820.jpg';
-import imgSiege from '../assets/images/siege_catapult_1794043541691.jpg';
-import imgBoss1 from '../assets/images/boss_warlord_1_1794043540234.jpg';
-import imgBoss2 from '../assets/images/boss_warlord_2_1794043542286.jpg';
 import {
   BattleSnapshot,
   BiomeTheme,
@@ -329,20 +321,20 @@ export class KingdomGameEngine {
 
     // Initialize Raylib 2D Texture/Sprite Pipeline & Preload High-Res Game Sprites
     this.rl = new Raylib2DContext(this.ctx);
-    this.texBg = this.rl.LoadTexture(imgBattlefieldBg, false);
-    this.texCastleAlly = this.rl.LoadTexture(imgCastleAlly, true);
-    this.texCastleEnemy = this.rl.LoadTexture(imgCastleEnemy, true);
-    this.texDragon = this.rl.LoadTexture(imgDragon, true);
-    this.texKnight = this.rl.LoadTexture(imgKnight, true);
-    this.texArcher = this.rl.LoadTexture(imgArcher, true);
-    this.texSiege = this.rl.LoadTexture(imgSiege, true);
-    this.texBoss1 = this.rl.LoadTexture(imgBoss1, true);
-    this.texBoss2 = this.rl.LoadTexture(imgBoss2, true);
+    this.texBg = this.rl.LoadTexture(EMBEDDED_SPRITES.bg, false);
+    this.texCastleAlly = this.rl.LoadTexture(EMBEDDED_SPRITES.castleAlly, true);
+    this.texCastleEnemy = this.rl.LoadTexture(EMBEDDED_SPRITES.castleEnemy, true);
+    this.texDragon = this.rl.LoadTexture(EMBEDDED_SPRITES.dragon, true);
+    this.texKnight = this.rl.LoadTexture(EMBEDDED_SPRITES.knight, true);
+    this.texArcher = this.rl.LoadTexture(EMBEDDED_SPRITES.archer, true);
+    this.texSiege = this.rl.LoadTexture(EMBEDDED_SPRITES.siege, true);
+    this.texBoss1 = this.rl.LoadTexture(EMBEDDED_SPRITES.boss1, true);
+    this.texBoss2 = this.rl.LoadTexture(EMBEDDED_SPRITES.boss2, true);
 
     if (typeof Image !== 'undefined') {
       const portraitMap = [
-        { key: BOSS_PORTRAIT_1, src: imgBoss1 },
-        { key: BOSS_PORTRAIT_2, src: imgBoss2 },
+        { key: BOSS_PORTRAIT_1, src: EMBEDDED_SPRITES.boss1 },
+        { key: BOSS_PORTRAIT_2, src: EMBEDDED_SPRITES.boss2 },
       ];
       for (const p of portraitMap) {
         const img = new Image();
