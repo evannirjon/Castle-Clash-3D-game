@@ -37,13 +37,18 @@ export class Raylib2DContext {
   }
 
   public LoadTexture(url: string, removeWhiteBackground = false): RLTexture2D {
-    const cacheKey = `${url}::${removeWhiteBackground ? 'chroma' : 'raw'}`;
+    // Resolve relative to Vite base URL so it works seamlessly on GitHub Pages subdirectories
+    const baseUrl = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || './';
+    const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+    const resolvedUrl = url.startsWith('http') || url.startsWith('data:') ? url : `${baseUrl}${cleanUrl}`;
+
+    const cacheKey = `${resolvedUrl}::${removeWhiteBackground ? 'chroma' : 'raw'}`;
     const existing = this.textures.get(cacheKey);
     if (existing) return existing;
 
     const tex: RLTexture2D = {
       id: cacheKey,
-      sourceUrl: url,
+      sourceUrl: resolvedUrl,
       width: 512,
       height: 512,
       ready: false,

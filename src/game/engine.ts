@@ -331,10 +331,14 @@ export class KingdomGameEngine {
     this.texBoss2 = this.rl.LoadTexture('/assets/sprites/boss_warlord_2.jpg', true);
 
     if (typeof Image !== 'undefined') {
+      const baseUrl = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || './';
       for (const url of BOSS_PORTRAITS) {
+        const cleanUrl = url.startsWith('/') ? url.slice(1) : url;
+        const resolvedUrl = url.startsWith('http') ? url : `${baseUrl}${cleanUrl}`;
         const img = new Image();
-        img.src = url;
+        img.src = resolvedUrl;
         this.bossImages.set(url, img);
+        this.bossImages.set(resolvedUrl, img);
       }
     }
 
