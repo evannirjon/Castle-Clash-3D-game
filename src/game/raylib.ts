@@ -70,7 +70,13 @@ export class Raylib2DContext {
         tex.drawable = this.stripOuterWhiteBackground(img);
         tex.ready = true;
       };
-      img.src = url;
+      img.onerror = () => {
+        // Fallback: try relative path if absolute failed
+        if (url.startsWith('/')) {
+          img.src = '.' + url;
+        }
+      };
+      img.src = resolvedUrl;
     }
 
     return tex;
