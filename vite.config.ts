@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: './',
+    base: process.env.GITHUB_PAGES === 'true' ? '/Castle-Clash-3D-game/' : './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

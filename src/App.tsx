@@ -317,26 +317,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Top-Right Instant Play Link & Audio Controls */}
+            {/* Top-Right Audio Control Only */}
             <div className="flex items-center gap-2 pointer-events-auto">
-              <button
-                type="button"
-                onClick={() => {
-                  const url = `${window.location.origin}${window.location.pathname}?autostart=1`;
-                  navigator.clipboard.writeText(url).catch(() => {});
-                  const btn = document.getElementById('copy-play-link-btn');
-                  if (btn) {
-                    btn.textContent = 'LINK COPIED!';
-                    setTimeout(() => {
-                      btn.textContent = 'ONE-CLICK LINK';
-                    }, 2000);
-                  }
-                }}
-                className="px-3 py-2 rounded-xl bg-gradient-to-r from-amber-500/90 to-yellow-600/90 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-calibri font-black text-xs uppercase tracking-wider border-2 border-amber-200 shadow-lg cursor-pointer transition-transform active:scale-95"
-              >
-                <span id="copy-play-link-btn">ONE-CLICK LINK</span>
-              </button>
-
               <button
                 type="button"
                 aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
