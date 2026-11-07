@@ -1,0 +1,6 @@
+{
+  "name": "Crown & Cinder: Kingdom Invaders",
+  "description": "A 2D medieval fantasy tower defense and kingdom siege strategy game with 20 campaign levels, unlockable heroes, siege weapons, and summonable dragons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
