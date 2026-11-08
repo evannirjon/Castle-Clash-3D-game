@@ -1,6 +1,6 @@
 # Castle Clash: Heros vs Bosses
 
-A polished 2D medieval strategy & kingdom siege game featuring cavalry animations, flying dragons, castle warfare, and cartoon boss commanders.
+A polished 3D medieval strategy & kingdom siege game featuring cavalry animations, flying dragons, castle warfare, and cartoon boss commanders.
 
 ---
 
