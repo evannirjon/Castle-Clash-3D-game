@@ -1,8 +1,13 @@
-# Castle Clash: Heroes vs Bosses
+# Castle Clash: Heros vs Bosses
 
 A polished 2D medieval strategy & kingdom siege game featuring cavalry animations, flying dragons, castle warfare, and cartoon boss commanders.
 
 ---
+
+# Castle Clash Game demo Video
+
+https://github.com/user-attachments/assets/21af250e-5125-4433-8740-667869955db0
+
 
 ## 🎮 Play in Browser
 
